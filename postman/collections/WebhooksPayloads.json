@@ -971,12 +971,12 @@
   ],
   "variable": [
     {
-      "id": "751d7f50-367a-4d99-9c99-b64aecd54af2",
+      "id": "59e5361b-cbb2-48e8-9500-419e03d7c0bf",
       "key": "baseUrl",
       "value": "https://fcde83ce-ae2a-4165-bf7f-c2bb5f7fe762.mock.pstmn.io"
     },
     {
-      "id": "aeb1da54-7d36-479f-b214-c69d01a20e86",
+      "id": "8fbc4bb9-cc2a-4ab3-9e48-cbc04b976053",
       "key": "authToken",
       "value": "dummy_token"
     }
