@@ -943,16 +943,11 @@
       ]
     }
   ],
-  "auth": {
-    "type": "bearer",
-    "bearer": {
-      "token": "{{authToken}}"
-    }
-  },
   "event": [
     {
       "listen": "prerequest",
       "script": {
+        "id": "d9ec813d-8433-448e-8e38-4ff1cbffe2e3",
         "type": "text/javascript",
         "exec": [
           ""
@@ -962,6 +957,7 @@
     {
       "listen": "test",
       "script": {
+        "id": "0982f09a-a2b5-445a-afdd-ba7419a390cc",
         "type": "text/javascript",
         "exec": [
           ""
@@ -971,14 +967,9 @@
   ],
   "variable": [
     {
-      "id": "59e5361b-cbb2-48e8-9500-419e03d7c0bf",
+      "id": "11d10191-b2bd-42fc-90a2-d622dfc90b25",
       "key": "baseUrl",
       "value": "https://fcde83ce-ae2a-4165-bf7f-c2bb5f7fe762.mock.pstmn.io"
-    },
-    {
-      "id": "8fbc4bb9-cc2a-4ab3-9e48-cbc04b976053",
-      "key": "authToken",
-      "value": "dummy_token"
     }
   ]
 }
