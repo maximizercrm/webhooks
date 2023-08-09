@@ -8,7 +8,7 @@
   "item": [
     {
       "name": "Opportunity Stage Change",
-      "_postman_id": "55fa1e05-c3a6-4e64-94ab-1edd9cd6692c",
+      "id": "55fa1e05-c3a6-4e64-94ab-1edd9cd6692c",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -30,7 +30,7 @@
     },
     {
       "name": "AbEntry Export",
-      "_postman_id": "f4ffa4df-687d-4346-b5d5-3c628c5145c6",
+      "id": "f4ffa4df-687d-4346-b5d5-3c628c5145c6",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -52,7 +52,7 @@
     },
     {
       "name": "Opportunities Export",
-      "_postman_id": "e336dcc1-1561-4135-913c-0e06707f46ab",
+      "id": "e336dcc1-1561-4135-913c-0e06707f46ab",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
