@@ -1,0 +1,75 @@
+{
+  "info": {
+    "_postman_id": "e69d1ad8-2ac0-456b-9e64-0d10f686f736",
+    "name": "Webhooks Payloads",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Opportunity Stage Change",
+      "id": "ead00239-04f3-4697-b811-acd1386d6a27",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"aa999523-121f-4730-90dc-ba5023f85b96\",\r\n    \"entity\": \"Opportunity\",\r\n    \"workspaceId\": \"e8a00fd6-482b-47de-8dee-8d28a7490f00\",\r\n    \"timestamp\": \"2023-04-12T12:12:12Z\",\r\n    \"data\": {\r\n        \"op\": \"update\",\r\n        \"original\": {\r\n            \"key\":\"T3Bwb3J0dW5pdHkJT1BQX0RFTU9fMgkw\",\r\n            \"salesProcessSetupKey\": \"U2FsZXNQcm9jZXNzCTIyMDQwNjI1MTM1MTM0MDYwMDAwMUcJMA==\",\r\n            \"salesStageSetupKey\": \"U2FsZXNQcm9jZXNzU3RhZ2VTZXR1cAkyMjA0MDYyNTEzNTMwNzEwNzAwMDhHCTA=\",\r\n            \"userKey\": \"TODO\"\r\n        },\r\n        \"new\": {\r\n            \"salesStageSetupKey\": \"U2FsZXNQcm9jZXNzU3RhZ2VTZXR1cAkyMjA0MDYyNTEzNTI0Nzk5ODAwMDdHCTA=\"\r\n        },\r\n        \"version\": \"1.0\"\r\n    },\r\n    \"processedTimestamp\": \"2023-04-20T11:44:21Z\",\r\n    \"recipients\": [\r\n        \"VXNlcglNQVNURVI=\"\r\n    ],\r\n    \"options\": null\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": ""
+      },
+      "response": []
+    },
+    {
+      "name": "AbEntry Export",
+      "id": "8cdd3797-d521-41e1-a83f-90420934c9ea",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"processedTimestamp\": \"2023-05-26T19:31:37.3803817Z\",\r\n  \"recipients\": [\r\n    \"VXNlcglNQVNURVI=\"\r\n  ],\r\n  \"entity\": \"Export\",\r\n  \"workspaceid\": \"C4A2B3F3-A8DA-486C-A484-BE4CFA8C758D\",\r\n  \"timestamp\": \"2023-05-26T19:31:36.8885255Z\",\r\n  \"data\": {\r\n    \"op\": \"read\",\r\n    \"original\": {\r\n      \"entityType\": 1,\r\n      \"userKey\": \"VXNlcglMU0hBTw==\",\r\n      \"rows\": 11\r\n    },\r\n    \"version\": \"1.0\"\r\n  },\r\n  \"id\": \"718e990a-01e3-48d0-a719-e9e9bb4a9e2b\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": ""
+      },
+      "response": []
+    },
+    {
+      "name": "Opportunities Export",
+      "id": "2ea1c945-3b77-4fd5-8801-6724e0ab3065",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"processedTimestamp\": \"2023-05-26T19:32:08.3331953Z\",\r\n  \"recipients\": [\r\n    \"VXNlcglNQVNURVI=\"\r\n  ],\r\n  \"entity\": \"Export\",\r\n  \"workspaceid\": \"C4A2B3F3-A8DA-486C-A484-BE4CFA8C758D\",\r\n  \"timestamp\": \"2023-05-26T19:32:07.6208116Z\",\r\n  \"data\": {\r\n    \"op\": \"read\",\r\n    \"original\": {\r\n      \"entityType\": 2,\r\n      \"userKey\": \"VXNlcglMU0hBTw==\",\r\n      \"rows\": 30\r\n    },\r\n    \"version\": \"1.0\"\r\n  },\r\n  \"id\": \"be50bda1-155b-4720-8de8-624ab039cae7\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": ""
+      },
+      "response": []
+    }
+  ]
+}
