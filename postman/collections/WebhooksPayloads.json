@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "e69d1ad8-2ac0-456b-9e64-0d10f686f736",
-    "name": "Webhooks",
+    "name": "MaximizerCRM Webhooks",
     "description": "# 🪝 Get started here\n\nWebhooks are a mechanism that allows services to send real-time notifications to your application regarding asynchronous updates. The collection provides endpoints for setting up and managing webhooks, as well as verifying webhook events.\n\nThis collection demonstrates how to interact with a payment gateway and processing API, focusing specifically on the implementation of webhooks.\n\n### 🔐 Authentication and Authorization\n\nThis template assumes the user making requests to the Webhooks API would be authenticated, for example using a Bearer token. You can choose an authentication method to apply to the whole collection by selecting the collection and navigating to the Authorization tab.\n\n## 🔖 How to use this collection?\n\nThe collection is designed to be flexible and can be customized to meet the specific requirements of your own webhooks API implementation.\n\n#### Step 1: Update the base URL variable\n\nAdd your API's base URL in the `baseUrl` collection variable, replacing the existing dummy endpoint (`https://api.example.com`).\n\n#### Step 2: Create a webhook\n\nStart with `Create Webhook` endpoint to create a webhook and enter the following required information:\n\n- `webhook_url`: the name of the webhook that you're creating\n- `events`: (optional) Events that you want to trigger this webhook with. should be triggered on all events if none was provided.\n    \n\n#### **Step 3: Call the webhook**\n\nProceed to the `Trigger specific webhook` request. This call will utilize the `webhook_id` e.g. `W123456` set in the previous step. Under the **Body** tab, you can optionally update the payload to send.\n\n#### **Step 4: Verify various webhook payloads**\n\nTry sending several payloads to your webhooks with `Verify webhook` endpoint, and monitor your webhook server logs to verify if your webhooks are configured correctly as expected.\n\nYou can see an example of how to configure your webhook to be event-driven. We took Payment Gateway Service as an example here.\n\n#### **Step 5: Continue building the collection**\n\nCreate requests in this collection to test the new API endpoints you develop, and integrate your newly created webhooks in your other services.\n\n## ℹ️ Resources\n\n[Build Webhook with Postman APIs (Video Tutorial)](https://www.youtube.com/watch?v=wdLvXKkXhLk)  \n[Postman's Custom Webhooks](https://learning.postman.com/docs/integrations/webhooks/)\n\n## 💡Related templates\n\n[Content management API](https://go.pstmn.io/content-management-API)  \n[Social media API](https://go.pstmn.io/social-media-API-template)  \n[File storage API](https://go.pstmn.io/file-storage-API)  \n[IoT device management API](https://go.pstmn.io/IoT-device-management-API-template)  \n[CRM API](https://go.pstmn.io/CRM-API)  \n[Payment gateway and processing API](https://go.pstmn.io/payment-gateway-and-processing-API)  \n[Fintech banking API](https://go.pstmn.io/fintech-banking-API)",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
@@ -971,12 +971,12 @@
   ],
   "variable": [
     {
-      "id": "f8bad4f1-5e33-453f-b7f3-b7b17ada8d50",
+      "id": "6903624e-d2e7-45a6-a7f3-6d4bbc0e2f4e",
       "key": "baseUrl",
       "value": "https://fcde83ce-ae2a-4165-bf7f-c2bb5f7fe762.mock.pstmn.io"
     },
     {
-      "id": "e65cc99d-3216-45a0-a4be-6858539cc5d7",
+      "id": "43a454e2-876e-4eb8-9ecc-af9861dead94",
       "key": "authToken",
       "value": "dummy_token"
     }
