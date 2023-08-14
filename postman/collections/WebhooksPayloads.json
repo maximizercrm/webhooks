@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "c2b8bd6c-ba65-4be6-bafe-e9e4ec6e56a8",
     "name": "Webhooks Payloads",
-    "description": "# 🪝 Get started here\n\nWebhooks are a mechanism that allows services to send real-time notifications to your application regarding asynchronous updates. The collection provides endpoints for setting up and managing webhooks, as well as verifying webhook events.\n\nThis collection contains examples of webhooks payloads.\n\n## 🔖 How to use this collection?\n\nFork the collection and specify your webhook target endpoint and click \"Send\". The Postman will send this payload to your target.",
+    "description": "# 🪝 Get started here\n\nWebhooks are a mechanism that allows services to send real-time notifications to your application regarding asynchronous updates. The collection provides endpoints for setting up and managing webhooks, as well as verifying webhook events.\n\nThis collection contains examples of webhooks payloads.\n\n## 🔖 How to use this collection?\n\nFork the collection and specify your webhook target endpoint and click \"Send\". The Postman will send this payload to your target.\n\nRead more about the MaximizerCRM webhooks: [https://developer.maximizer.com/docs/webhooks](https://developer.maximizer.com/docs/webhooks)",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
