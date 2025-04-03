@@ -1,10 +1,10 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "info": {
     "title": "Webhooks API",
     "version": "v1"
   },
-"servers": [{"url": "https://api.maximizer.com/webhooks/v1"}],
+"servers": [{"url": "https://api-dev.maximizer.com/webhooks/v1"}],
   "paths": {
     "/subscriptions": {
       "post": {
@@ -12,28 +12,48 @@
           "Subscriptions"
         ],
         "summary": "Create a subscription",
-        "description": "1) SubscriptionId is auto-generated. Any value sent in the payload will be ignored.\r\n2) Combination of TargetId + Entity + Op must be unique.",
+        "description": "Combination of TargetId + Entity + Op must be unique.\r\n\r\nFilter operators:\r\n\r\nOperators applied to field values\r\n\r\nSyntax: \"field-name\": { \"operator\": \"field-value\" }\r\n\r\n    $EQ => equal\r\n    $GT => greater than\r\n    $GE => greater than or equal\r\n    $LT => lower than\r\n    $LE => lower than or equal\r\n\r\nOperators applied to field names\r\n\r\nSyntax: \"operator\": \"field-name\"\r\n\r\n    $HASFIELD => field exists in either Original or New data sections",
         "requestBody": {
           "description": "",
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/SubscriptionDto"
+                "$ref": "#/components/schemas/SubscriptionRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Entity":"AbEntry, Opportunity, etc","Op":"Create, Update, Delete, etc","TargetId":"12345678-1234-1234-1234-123456789012","Recipients":["Recipient1@acme.com","Recipient2@acme.com"],"Filter":["{ \"Key\" : { \"$EQ\": \"key-value\" } }","{ \"Rows\" : { \"$GT\": 500 } }","{ \"$HASFIELD\": \"field-name\" }"]}
+                }
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SubscriptionDto"
+                "$ref": "#/components/schemas/SubscriptionRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Entity":"AbEntry, Opportunity, etc","Op":"Create, Update, Delete, etc","TargetId":"12345678-1234-1234-1234-123456789012","Recipients":["Recipient1@acme.com","Recipient2@acme.com"],"Filter":["{ \"Key\" : { \"$EQ\": \"key-value\" } }","{ \"Rows\" : { \"$GT\": 500 } }","{ \"$HASFIELD\": \"field-name\" }"]}
+                }
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/SubscriptionDto"
+                "$ref": "#/components/schemas/SubscriptionRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Entity":"AbEntry, Opportunity, etc","Op":"Create, Update, Delete, etc","TargetId":"12345678-1234-1234-1234-123456789012","Recipients":["Recipient1@acme.com","Recipient2@acme.com"],"Filter":["{ \"Key\" : { \"$EQ\": \"key-value\" } }","{ \"Rows\" : { \"$GT\": 500 } }","{ \"$HASFIELD\": \"field-name\" }"]}
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/SubscriptionDto"
+                "$ref": "#/components/schemas/SubscriptionRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Entity":"AbEntry, Opportunity, etc","Op":"Create, Update, Delete, etc","TargetId":"12345678-1234-1234-1234-123456789012","Recipients":["Recipient1@acme.com","Recipient2@acme.com"],"Filter":["{ \"Key\" : { \"$EQ\": \"key-value\" } }","{ \"Rows\" : { \"$GT\": 500 } }","{ \"$HASFIELD\": \"field-name\" }"]}
+                }
               }
             }
           }
@@ -87,7 +107,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriptionDtoSingleEntryResponseDto"
+                  "$ref": "#/components/schemas/SubscriptionResponseDtoSingleEntryResponseDto"
                 }
               }
             }
@@ -107,32 +127,29 @@
         "operationId": "GetListOfSubscriptions",
         "parameters": [
           {
-            "name": "targetId",
+            "name": "TargetId",
             "in": "query",
-            "description": "Optional filter by Target id",
+            "description": "Optional filter by Target Id",
             "schema": {
               "type": "string",
               "format": "uuid"
-            },
-            "example": "06a03255-56a6-4e00-83cc-d9242a7f4d27"
+            }
           },
           {
-            "name": "entity",
+            "name": "Entity",
             "in": "query",
             "description": "Optional filter by Entity",
             "schema": {
               "type": "string"
-            },
-            "example": "Opportunity"
+            }
           },
           {
-            "name": "op",
+            "name": "Op",
             "in": "query",
             "description": "Optional filter by Operation",
             "schema": {
               "type": "string"
-            },
-            "example": "Create"
+            }
           }
         ],
         "responses": {
@@ -174,7 +191,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriptionDtoMultipleEntriesResponseDto"
+                  "$ref": "#/components/schemas/SubscriptionResponseDtoMultipleEntriesResponseDto"
                 }
               }
             }
@@ -187,16 +204,16 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}": {
+    "/subscriptions/{SubscriptionId}": {
       "put": {
         "tags": [
           "Subscriptions"
         ],
         "summary": "Update an existing subscription",
-        "description": "Combination of TargetId + Entity + Op must be unique.",
+        "description": "Combination of TargetId + Entity + Op must be unique.\r\n\r\nFilter operators:\r\n\r\nOperators applied to field values\r\n\r\nSyntax: \"field-name\": { \"operator\": \"field-value\" }\r\n\r\n    $EQ => equal\r\n    $GT => greater than\r\n    $GE => greater than or equal\r\n    $LT => lower than\r\n    $LE => lower than or equal\r\n\r\nOperators applied to field names\r\n\r\nSyntax: \"operator\": \"field-name\"\r\n\r\n    $HASFIELD => field exists in either Original or New data sections",
         "parameters": [
           {
-            "name": "subscriptionId",
+            "name": "SubscriptionId",
             "in": "path",
             "description": "",
             "required": true,
@@ -211,22 +228,42 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/SubscriptionDto"
+                "$ref": "#/components/schemas/SubscriptionRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Entity":"AbEntry, Opportunity, etc","Op":"Create, Update, Delete, etc","TargetId":"12345678-1234-1234-1234-123456789012","Recipients":["Recipient1@acme.com","Recipient2@acme.com"],"Filter":["{ \"Key\" : { \"$EQ\": \"key-value\" } }","{ \"Rows\" : { \"$GT\": 500 } }","{ \"$HASFIELD\": \"field-name\" }"]}
+                }
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SubscriptionDto"
+                "$ref": "#/components/schemas/SubscriptionRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Entity":"AbEntry, Opportunity, etc","Op":"Create, Update, Delete, etc","TargetId":"12345678-1234-1234-1234-123456789012","Recipients":["Recipient1@acme.com","Recipient2@acme.com"],"Filter":["{ \"Key\" : { \"$EQ\": \"key-value\" } }","{ \"Rows\" : { \"$GT\": 500 } }","{ \"$HASFIELD\": \"field-name\" }"]}
+                }
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/SubscriptionDto"
+                "$ref": "#/components/schemas/SubscriptionRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Entity":"AbEntry, Opportunity, etc","Op":"Create, Update, Delete, etc","TargetId":"12345678-1234-1234-1234-123456789012","Recipients":["Recipient1@acme.com","Recipient2@acme.com"],"Filter":["{ \"Key\" : { \"$EQ\": \"key-value\" } }","{ \"Rows\" : { \"$GT\": 500 } }","{ \"$HASFIELD\": \"field-name\" }"]}
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/SubscriptionDto"
+                "$ref": "#/components/schemas/SubscriptionRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Entity":"AbEntry, Opportunity, etc","Op":"Create, Update, Delete, etc","TargetId":"12345678-1234-1234-1234-123456789012","Recipients":["Recipient1@acme.com","Recipient2@acme.com"],"Filter":["{ \"Key\" : { \"$EQ\": \"key-value\" } }","{ \"Rows\" : { \"$GT\": 500 } }","{ \"$HASFIELD\": \"field-name\" }"]}
+                }
               }
             }
           }
@@ -320,17 +357,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriptionDtoSingleEntryResponseDto"
+                  "$ref": "#/components/schemas/SubscriptionResponseDtoSingleEntryResponseDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriptionDtoSingleEntryResponseDto"
+                  "$ref": "#/components/schemas/SubscriptionResponseDtoSingleEntryResponseDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriptionDtoSingleEntryResponseDto"
+                  "$ref": "#/components/schemas/SubscriptionResponseDtoSingleEntryResponseDto"
                 }
               }
             }
@@ -349,7 +386,7 @@
         "summary": "Delete a subscription",
         "parameters": [
           {
-            "name": "subscriptionId",
+            "name": "SubscriptionId",
             "in": "path",
             "description": "",
             "required": true,
@@ -420,28 +457,47 @@
           "Targets"
         ],
         "summary": "Create a target",
-        "description": "1) TargetId is auto-generated. Any value sent in the payload will be ignored.\r\n2) Name must be unique.",
         "requestBody": {
           "description": "",
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/TargetDto"
+                "$ref": "#/components/schemas/TargetRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Name":"Target Name","Endpoint":{"Url":"https://my-target-url.acme.com/webhook","Headers":[{"Key":"Authorization","Value":"Bearer 1234567890"},{"Key":"AnotherRelevantHeader","Value":"Header Value"}]}}
+                }
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TargetDto"
+                "$ref": "#/components/schemas/TargetRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Name":"Target Name","Endpoint":{"Url":"https://my-target-url.acme.com/webhook","Headers":[{"Key":"Authorization","Value":"Bearer 1234567890"},{"Key":"AnotherRelevantHeader","Value":"Header Value"}]}}
+                }
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TargetDto"
+                "$ref": "#/components/schemas/TargetRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Name":"Target Name","Endpoint":{"Url":"https://my-target-url.acme.com/webhook","Headers":[{"Key":"Authorization","Value":"Bearer 1234567890"},{"Key":"AnotherRelevantHeader","Value":"Header Value"}]}}
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TargetDto"
+                "$ref": "#/components/schemas/TargetRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Name":"Target Name","Endpoint":{"Url":"https://my-target-url.acme.com/webhook","Headers":[{"Key":"Authorization","Value":"Bearer 1234567890"},{"Key":"AnotherRelevantHeader","Value":"Header Value"}]}}
+                }
               }
             }
           }
@@ -495,7 +551,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TargetDtoSingleEntryResponseDto"
+                  "$ref": "#/components/schemas/TargetResponseDtoSingleEntryResponseDto"
                 }
               }
             }
@@ -515,13 +571,12 @@
         "operationId": "GetListOfTargets",
         "parameters": [
           {
-            "name": "name",
+            "name": "Name",
             "in": "query",
             "description": "Optional filter by Target name",
             "schema": {
               "type": "string"
-            },
-            "example": "My Target"
+            }
           }
         ],
         "responses": {
@@ -553,7 +608,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TargetDtoMultipleEntriesResponseDto"
+                  "$ref": "#/components/schemas/TargetResponseDtoMultipleEntriesResponseDto"
                 }
               }
             }
@@ -566,16 +621,15 @@
         ]
       }
     },
-    "/targets/{targetId}": {
+    "/targets/{TargetId}": {
       "put": {
         "tags": [
           "Targets"
         ],
         "summary": "Update an existing target",
-        "description": "Name must be unique.",
         "parameters": [
           {
-            "name": "targetId",
+            "name": "TargetId",
             "in": "path",
             "description": "",
             "required": true,
@@ -590,22 +644,42 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/TargetDto"
+                "$ref": "#/components/schemas/TargetRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Name":"Target Name","Endpoint":{"Url":"https://my-target-url.acme.com/webhook","Headers":[{"Key":"Authorization","Value":"Bearer 1234567890"},{"Key":"AnotherRelevantHeader","Value":"Header Value"}]}}
+                }
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TargetDto"
+                "$ref": "#/components/schemas/TargetRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Name":"Target Name","Endpoint":{"Url":"https://my-target-url.acme.com/webhook","Headers":[{"Key":"Authorization","Value":"Bearer 1234567890"},{"Key":"AnotherRelevantHeader","Value":"Header Value"}]}}
+                }
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TargetDto"
+                "$ref": "#/components/schemas/TargetRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Name":"Target Name","Endpoint":{"Url":"https://my-target-url.acme.com/webhook","Headers":[{"Key":"Authorization","Value":"Bearer 1234567890"},{"Key":"AnotherRelevantHeader","Value":"Header Value"}]}}
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TargetDto"
+                "$ref": "#/components/schemas/TargetRequestDto"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"Name":"Target Name","Endpoint":{"Url":"https://my-target-url.acme.com/webhook","Headers":[{"Key":"Authorization","Value":"Bearer 1234567890"},{"Key":"AnotherRelevantHeader","Value":"Header Value"}]}}
+                }
               }
             }
           }
@@ -659,7 +733,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TargetDtoSingleEntryResponseDto"
+                  "$ref": "#/components/schemas/TargetResponseDtoSingleEntryResponseDto"
                 }
               }
             }
@@ -678,7 +752,7 @@
         "summary": "Delete an existing target",
         "parameters": [
           {
-            "name": "targetId",
+            "name": "TargetId",
             "in": "path",
             "description": "",
             "required": true,
@@ -743,7 +817,7 @@
         ]
       }
     },
-    "/targets/{targetId}/enable": {
+    "/targets/{TargetId}/enable": {
       "patch": {
         "tags": [
           "Targets"
@@ -751,7 +825,7 @@
         "summary": "Enable a target",
         "parameters": [
           {
-            "name": "targetId",
+            "name": "TargetId",
             "in": "path",
             "description": "",
             "required": true,
@@ -806,7 +880,7 @@
         ]
       }
     },
-    "/targets/{targetId}/disable": {
+    "/targets/{TargetId}/disable": {
       "patch": {
         "tags": [
           "Targets"
@@ -814,7 +888,7 @@
         "summary": "Disable a target",
         "parameters": [
           {
-            "name": "targetId",
+            "name": "TargetId",
             "in": "path",
             "description": "",
             "required": true,
@@ -912,7 +986,35 @@
           }
         }
       },
-      "SubscriptionDto": {
+      "SubscriptionRequestDto": {
+        "type": "object",
+        "properties": {
+          "Entity": {
+            "type": "string",
+            "nullable": true
+          },
+          "Op": {
+            "type": "string",
+            "nullable": true
+          },
+          "TargetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Recipients": {
+            "type": "array",
+            "items": { },
+            "nullable": true
+          },
+          "Filter": {
+            "type": "array",
+            "items": { },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionResponseDto": {
         "type": "object",
         "properties": {
           "SubscriptionId": {
@@ -944,47 +1046,60 @@
         },
         "additionalProperties": false
       },
-      "SubscriptionDtoMultipleEntriesItemsResponseDto": {
+      "SubscriptionResponseDtoMultipleEntriesItemsResponseDto": {
         "type": "object",
         "properties": {
           "Items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SubscriptionDto"
+              "$ref": "#/components/schemas/SubscriptionResponseDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SubscriptionDtoMultipleEntriesResponseDto": {
+      "SubscriptionResponseDtoMultipleEntriesResponseDto": {
         "type": "object",
         "properties": {
           "Data": {
-            "$ref": "#/components/schemas/SubscriptionDtoMultipleEntriesItemsResponseDto"
+            "$ref": "#/components/schemas/SubscriptionResponseDtoMultipleEntriesItemsResponseDto"
           }
         },
         "additionalProperties": false
       },
-      "SubscriptionDtoSingleEntryItemResponseDto": {
+      "SubscriptionResponseDtoSingleEntryItemResponseDto": {
         "type": "object",
         "properties": {
           "Item": {
-            "$ref": "#/components/schemas/SubscriptionDto"
+            "$ref": "#/components/schemas/SubscriptionResponseDto"
           }
         },
         "additionalProperties": false
       },
-      "SubscriptionDtoSingleEntryResponseDto": {
+      "SubscriptionResponseDtoSingleEntryResponseDto": {
         "type": "object",
         "properties": {
           "Data": {
-            "$ref": "#/components/schemas/SubscriptionDtoSingleEntryItemResponseDto"
+            "$ref": "#/components/schemas/SubscriptionResponseDtoSingleEntryItemResponseDto"
           }
         },
         "additionalProperties": false
       },
-      "TargetDto": {
+      "TargetRequestDto": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "Endpoint": {
+            "$ref": "#/components/schemas/TargetWebHookEndpointDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TargetResponseDto": {
         "type": "object",
         "properties": {
           "TargetId": {
@@ -998,53 +1113,48 @@
           "Enabled": {
             "type": "boolean"
           },
-          "EndpointType": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
           "Endpoint": {
             "$ref": "#/components/schemas/TargetWebHookEndpointDto"
           }
         },
         "additionalProperties": false
       },
-      "TargetDtoMultipleEntriesItemsResponseDto": {
+      "TargetResponseDtoMultipleEntriesItemsResponseDto": {
         "type": "object",
         "properties": {
           "Items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TargetDto"
+              "$ref": "#/components/schemas/TargetResponseDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "TargetDtoMultipleEntriesResponseDto": {
+      "TargetResponseDtoMultipleEntriesResponseDto": {
         "type": "object",
         "properties": {
           "Data": {
-            "$ref": "#/components/schemas/TargetDtoMultipleEntriesItemsResponseDto"
+            "$ref": "#/components/schemas/TargetResponseDtoMultipleEntriesItemsResponseDto"
           }
         },
         "additionalProperties": false
       },
-      "TargetDtoSingleEntryItemResponseDto": {
+      "TargetResponseDtoSingleEntryItemResponseDto": {
         "type": "object",
         "properties": {
           "Item": {
-            "$ref": "#/components/schemas/TargetDto"
+            "$ref": "#/components/schemas/TargetResponseDto"
           }
         },
         "additionalProperties": false
       },
-      "TargetDtoSingleEntryResponseDto": {
+      "TargetResponseDtoSingleEntryResponseDto": {
         "type": "object",
         "properties": {
           "Data": {
-            "$ref": "#/components/schemas/TargetDtoSingleEntryItemResponseDto"
+            "$ref": "#/components/schemas/TargetResponseDtoSingleEntryItemResponseDto"
           }
         },
         "additionalProperties": false
