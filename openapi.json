@@ -124,6 +124,7 @@
           "Subscriptions"
         ],
         "summary": "Get list of subscriptions",
+        "description": "",
         "operationId": "GetListOfSubscriptions",
         "parameters": [
           {
@@ -384,6 +385,7 @@
           "Subscriptions"
         ],
         "summary": "Delete a subscription",
+        "description": "",
         "parameters": [
           {
             "name": "SubscriptionId",
@@ -451,12 +453,257 @@
         ]
       }
     },
+    "/subscriptions/{SubscriptionId}/recipients/{Recipient}": {
+      "put": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "Add a recipient to a subscription",
+        "description": "",
+        "parameters": [
+          {
+            "name": "SubscriptionId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Recipient",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "Delete a recipient from a subscription",
+        "description": "",
+        "parameters": [
+          {
+            "name": "SubscriptionId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Recipient",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
     "/targets": {
       "post": {
         "tags": [
           "Targets"
         ],
         "summary": "Create a target",
+        "description": "",
         "requestBody": {
           "description": "",
           "content": {
@@ -568,6 +815,7 @@
           "Targets"
         ],
         "summary": "Get list of targets",
+        "description": "",
         "operationId": "GetListOfTargets",
         "parameters": [
           {
@@ -627,6 +875,7 @@
           "Targets"
         ],
         "summary": "Update an existing target",
+        "description": "",
         "parameters": [
           {
             "name": "TargetId",
@@ -750,6 +999,7 @@
           "Targets"
         ],
         "summary": "Delete an existing target",
+        "description": "",
         "parameters": [
           {
             "name": "TargetId",
@@ -823,6 +1073,7 @@
           "Targets"
         ],
         "summary": "Enable a target",
+        "description": "",
         "parameters": [
           {
             "name": "TargetId",
@@ -886,6 +1137,7 @@
           "Targets"
         ],
         "summary": "Disable a target",
+        "description": "",
         "parameters": [
           {
             "name": "TargetId",
@@ -1003,7 +1255,9 @@
           },
           "Recipients": {
             "type": "array",
-            "items": { },
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           },
           "Filter": {
@@ -1035,7 +1289,9 @@
           },
           "Recipients": {
             "type": "array",
-            "items": { },
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           },
           "Filter": {
