@@ -12,7 +12,7 @@
           "Subscriptions"
         ],
         "summary": "Create a subscription",
-        "description": "Combination of TargetId + Entity + Op must be unique.\n\nFilter operators:\n\nOperators applied to field values\n\nSyntax: \"field-name\": { \"operator\": \"field-value\" }\n\n    $EQ => equal\n    $GT => greater than\n    $GE => greater than or equal\n    $LT => lower than\n    $LE => lower than or equal\n\nOperators applied to field names\n\nSyntax: \"operator\": \"field-name\"\n\n    $HASFIELD => field exists in either Original or New data sections",
+        "description": "Combination of TargetId + Entity + Op must be unique.\n\nFilter operators:\n\nOperators applied to field values\nSupported field types: string, bool, int, float\n\nSyntax: \"field-name\": { \"operator\": \"field-value\" }\n\n    $EQ    => equal\n    $NE    => not equal\n    $GT    => greater than\n    $GE    => greater than or equal\n    $LT    => lower than\n    $LE    => lower than or equal\n    $IN    => in (list of values)\n    $NIN   => not in (list of values)\n    $LIKE  => like (with % as the only possible wildcard)\n    $NLIKE => not like (with % as the only possible wildcard)\n\nOperators applied to field names\n\nSyntax: \"operator\": \"field-name\"\n\n    $EXISTS  => field exists in either Original or New data sections\n    $NEXISTS => field does not exist in both Original and New data sections",
         "requestBody": {
           "description": "",
           "content": {
@@ -211,7 +211,7 @@
           "Subscriptions"
         ],
         "summary": "Update an existing subscription",
-        "description": "Combination of TargetId + Entity + Op must be unique.\n\nFilter operators:\n\nOperators applied to field values\n\nSyntax: \"field-name\": { \"operator\": \"field-value\" }\n\n    $EQ => equal\n    $GT => greater than\n    $GE => greater than or equal\n    $LT => lower than\n    $LE => lower than or equal\n\nOperators applied to field names\n\nSyntax: \"operator\": \"field-name\"\n\n    $HASFIELD => field exists in either Original or New data sections",
+        "description": "Combination of TargetId + Entity + Op must be unique.\n\nFilter operators:\n\nOperators applied to field values\nSupported field types: string, bool, int, float\n\nSyntax: \"field-name\": { \"operator\": \"field-value\" }\n\n    $EQ    => equal\n    $NE    => not equal\n    $GT    => greater than\n    $GE    => greater than or equal\n    $LT    => lower than\n    $LE    => lower than or equal\n    $IN    => in (list of values)\n    $NIN   => not in (list of values)\n    $LIKE  => like (with % as the only possible wildcard)\n    $NLIKE => not like (with % as the only possible wildcard)\n\nOperators applied to field names\n\nSyntax: \"operator\": \"field-name\"\n\n    $EXISTS  => field exists in either Original or New data sections\n    $NEXISTS => field does not exist in both Original and New data sections",
         "parameters": [
           {
             "name": "SubscriptionId",
